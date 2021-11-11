@@ -18,6 +18,8 @@ public class Main {
 
         temp=line.split(" ");
 
+        float result=0;
+
         for(int i = 0; i<temp.length; i++){
 
             if(Character.isDigit(temp[i].charAt(0))==false){
@@ -34,30 +36,19 @@ public class Main {
         temp_number.removeAll(Collections.singletonList(null));
         temp_word.removeAll(Collections.singletonList(null));
 
-
-        System.out.println(temp_number);
-        System.out.println(temp_word);
-        System.out.println(temp_number.get(0));
-
-        int result= (int)temp_number.get(0);;
-
+        result=Integer.parseInt(String.valueOf(temp_number.get(0)));
         for (int i=1;i<temp_word.size();i++){
 
-
-
-            if(temp_word.get(i).equals("+")){
-                result=result+(int)temp_number.get(i);
-
-            }else if(temp_word.get(i).equals("-")) {
-                result=result-(int)temp_number.get(i);
-
-            }else if(temp_word.get(i).equals("/")) {
-                result=result/(int)temp_number.get(i);
-            }else if(temp_word.get(i).equals("*")){
-                result=result*(int)temp_number.get(i);
+            if(temp_word.get(i-1).equals("+")){
+                result=result+Float.parseFloat(String.valueOf(temp_number.get(i)));
+            }else if(temp_word.get(i-1).equals("-")) {
+                result=result-Float.parseFloat(String.valueOf(temp_number.get(i)));
+            }else if(temp_word.get(i-1).equals("/")) {
+                result=result/Float.parseFloat(String.valueOf(temp_number.get(i)));
+            }else if(temp_word.get(i-1).equals("*")){
+                result=result*Float.parseFloat(String.valueOf(temp_number.get(i)));
             }
         }
         System.out.println(result);
-
     }
 }
