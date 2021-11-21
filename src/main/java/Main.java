@@ -1,54 +1,50 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Main {
     public static void main(String[] args) {
 
-        Scanner s=new Scanner(System.in);
+        Queue number=new LinkedList<>();
+        Queue operator=new LinkedList<>();
 
-        Queue<String> number=new LinkedList<>();
-        Queue<String> word=new LinkedList<>();
+        String line=Input.input();
 
-        System.out.println("입력하세요");
-        String line=s.nextLine();
-
-        String temp[];
         ArrayList temp_number=new ArrayList();
-        ArrayList temp_word=new ArrayList();
+        ArrayList temp_operator=new ArrayList();
 
-
-        temp=line.split(" ");
+        String temp[]=line.split(" ");
 
         float result=0;
 
         for(int i = 0; i<temp.length; i++){
-
             if(Character.isDigit(temp[i].charAt(0))==false){
-                word.add(temp[i]);
-            }else {
+                operator.add(temp[i]);
+            }else{
                 number.add(temp[i]);
             }
 
-
             temp_number.add(number.poll());
-            temp_word.add(word.poll());
+            temp_operator.add(operator.poll());
 
         }
         temp_number.removeAll(Collections.singletonList(null));
-        temp_word.removeAll(Collections.singletonList(null));
+        temp_operator.removeAll(Collections.singletonList(null));
 
         result=Integer.parseInt(String.valueOf(temp_number.get(0)));
-        for (int i=1;i<temp_word.size();i++){
 
-            if(temp_word.get(i-1).equals("+")){
+        for (int i=1;i<temp_operator.size()+1;i++){
+            if(temp_operator.get(i-1).equals("+")){
                 result=result+Float.parseFloat(String.valueOf(temp_number.get(i)));
-            }else if(temp_word.get(i-1).equals("-")) {
+            }else if(temp_operator.get(i-1).equals("-")) {
                 result=result-Float.parseFloat(String.valueOf(temp_number.get(i)));
-            }else if(temp_word.get(i-1).equals("/")) {
+            }else if(temp_operator.get(i-1).equals("/")) {
                 result=result/Float.parseFloat(String.valueOf(temp_number.get(i)));
-            }else if(temp_word.get(i-1).equals("*")){
+            }else if(temp_operator.get(i-1).equals("*")){
                 result=result*Float.parseFloat(String.valueOf(temp_number.get(i)));
             }
         }
-        System.out.println(result);
+        Output.output(result);
     }
 }
