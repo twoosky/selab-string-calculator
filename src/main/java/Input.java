@@ -5,7 +5,6 @@ public class Input {
         Scanner scanner = new Scanner(System.in);
         System.out.println("입력하세요");
         return scanner.nextLine();
-
     }
 
 }
