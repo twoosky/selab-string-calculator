@@ -24,10 +24,10 @@ public class Operator {
     public static void cal(Queue operator, Queue number) {
         float result = Float.parseFloat(String.valueOf(number.poll()));
 
-        Iterator iter_oper=operator.iterator();
+        Iterator iter_oper = operator.iterator();
 
-        while(iter_oper.hasNext()){
-            float next= Float.parseFloat(String.valueOf(number.poll())) ;
+        while (iter_oper.hasNext()) {
+            float next = Float.parseFloat(String.valueOf(number.poll()));
             if (iter_oper.next().equals("+")) {
                 result += next;
             } else if (iter_oper.next().equals("*")) {
@@ -35,7 +35,7 @@ public class Operator {
             } else if (iter_oper.next().equals("-")) {
                 result -= next;
             } else if (iter_oper.next().equals("/")) {
-                result /=next;
+                result /= next;
             }
         }
         Output.output(result);
