@@ -12,9 +12,13 @@ public class Num {
 
     private void setNumList(String[] changeArray) {
         for (int i = Calculator.indexZero; i < changeArray.length; i++) {
-            if (i % Calculator.indexSecond == Calculator.indexZero)
+            if ( isNumIndex(i) )
                 numList.add(Integer.parseInt(changeArray[i]));
         }
+    }
+
+    private boolean isNumIndex(int index) {
+        return index % Calculator.indexSecond == 0;
     }
 
     public List<Integer> setNumList() {

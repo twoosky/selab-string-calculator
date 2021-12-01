@@ -3,21 +3,25 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OperatorList {
+public class Operators {
     private final List<String> operatorList = new ArrayList<>();
 
-    public OperatorList(String[] changeArray) {
+    public Operators(String[] changeArray) {
         setOperatorList(changeArray);
         validateSize(List.of(changeArray));
     }
 
     private void setOperatorList(String[] changeArray) {
         for (int i = Calculator.indexZero; i < changeArray.length; i++) {
-            if (i % Calculator.indexSecond != Calculator.indexZero) {
+            if (isOperatorIndex(i)) {
                 operatorList.add(changeArray[i]);
                 continue;
             }
         }
+    }
+
+    private boolean isOperatorIndex(int index) {
+        return index % Calculator.indexSecond == Calculator.indexFirst;
     }
 
     public List<String> getOperatorList() {
