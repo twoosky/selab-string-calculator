@@ -7,6 +7,8 @@ public class InputView {
 
     public static String initFormula() {
         System.out.print("식을 입력해주세요 : ");
-        return scanner.nextLine();
+        final String formula = scanner.nextLine();
+        scanner.close();
+        return formula;
     }
 }

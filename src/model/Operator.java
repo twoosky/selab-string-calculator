@@ -19,7 +19,9 @@ public enum Operator {
     }
 
     public static Integer calculate(Integer num1, String operator, Integer num2) {
-        return getOperator(operator).expression.apply(num1, num2);
+        return getOperator(operator)
+                .expression
+                .apply(num1, num2);
     }
 
     private static Operator getOperator(String operator) {
