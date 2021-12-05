@@ -5,8 +5,9 @@ public class Main {
   public static void main(String[] args) {
 
     Input input = new Input();
+    Output output = new Output();
     Calculator calculator = new Calculator();
 
-    System.out.println(calculator.isProgressing(input.scanLine(), INIT_RANGE));
+    output.printResult(calculator.isProgressing(input.scanLine(), INIT_RANGE));
   }
 }
