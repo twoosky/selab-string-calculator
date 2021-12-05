@@ -16,13 +16,17 @@ public enum Operators {
     this.calculate = calculate;
   }
 
-  public static int calculating (int frontNumber, String input_Symbol, int behindNumber) {
-    for (Operators operators : Operators.values() ) {
-      if (operators.equals(input_Symbol)) {
-        return operators.calculate.applyAsInt(frontNumber,behindNumber);
+  public static int calculating(int frontNumber, String input_Symbol, int behindNumber) {
+    for (Operators operators : Operators.values()) {
+      if (matchSymbol(operators, input_Symbol)) {
+        return operators.calculate.applyAsInt(frontNumber, behindNumber);
       }
     }
     throw new RuntimeException();
+  }
+
+  private static boolean matchSymbol(Operators operators, String input_Symbol) {
+    return operators.symbol.equals(input_Symbol);
   }
 
 }
