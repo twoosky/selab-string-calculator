@@ -16,6 +16,14 @@ public enum Operators {
     this.calculate = calculate;
   }
 
+  public static int calculating (int frontNumber, String input_Symbol, int behindNumber) {
+    for (Operators operators : Operators.values() ) {
+      if (operators.equals(input_Symbol)) {
+        return operators.calculate.applyAsInt(frontNumber,behindNumber);
+      }
+    }
+    throw new RuntimeException();
+  }
 
 }
 
