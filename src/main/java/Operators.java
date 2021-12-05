@@ -1,4 +1,3 @@
-import Operator.Operator;
 import java.util.function.IntBinaryOperator;
 
 public enum Operators {
