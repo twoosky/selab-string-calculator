@@ -1,13 +1,32 @@
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Calculator {
 
-  private final static int FRONT_NUMBER = 0;
-  private final static int OPERATOR_INDEX = 1;
-  private final static int BEHIND_NUMBER = 2;
+  protected int isProgressing(List<String> inputs, int result) {
+    Numbers numbers = new Numbers(inputs);
+    Operator operator = new Operator(inputs);
+    for (int i = 0; i < operator.getSize(); i++) {
+      if (i == operator.getSize() - 1) {
+        break;
+      }
+      result = calculating(numbers, operator, i);
+      numbers.finishedCalculateNumber(result);
+    }
+    return result;
+  }
 
-  protected int isProgressing(List<String> inputs, int answer) {
-    while (true) {
+  private int calculating(Numbers numbers, Operator operator, int index) {
+    return Operators.calculating(
+        numbers.getNumbers(0),
+        operator.getOperator(index),
+        numbers.getNumbers(1));
+  }
+
+}
+
+
+    /*while (true) {
 
       String operator = inputs.get(OPERATOR_INDEX);
       int frontNumber = Integer.parseInt(inputs.get(FRONT_NUMBER));
@@ -36,4 +55,4 @@ public class Calculator {
   }
 }
 
-
+*/
