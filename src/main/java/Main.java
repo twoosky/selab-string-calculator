@@ -8,7 +8,6 @@ public class Main {
     Output output = new Output();
     Calculator calculator = new Calculator();
 
-
     output.printResult(calculator.isProgressing(input.scanLine(), INIT_RANGE));
   }
 }
