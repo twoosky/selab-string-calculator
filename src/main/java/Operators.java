@@ -4,8 +4,8 @@ public enum Operators {
   PLUS("+", (frontNumber, behindNumber) -> frontNumber + behindNumber),
   MINUS("-", (frontNumber, behindNumber) -> frontNumber - behindNumber),
   MULTIPLE("*", (frontNumber, behindNumber) -> frontNumber * behindNumber),
-  DIVIDE("/", (frontNumber, behindNumber) -> frontNumber / behindNumber),
-  REMINDER("%", (frontNumber, behindNumber) -> frontNumber % behindNumber);
+  DIVIDE("/", (frontNumber, behindNumber) -> frontNumber / behindNumber);
+
 
   private final String symbol;
   private final IntBinaryOperator calculate;

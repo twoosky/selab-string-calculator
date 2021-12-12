@@ -5,11 +5,10 @@ import java.util.stream.Stream;
 public class Operator {
 
   private final List<String> Operator = new ArrayList<>();
-  private final static String ONLY_OPERATOR_REGEX = "[\\+\\-\\*/\\%]";
 
   Operator(List<String> inputs) {
     Stream<String> operatorStream = inputs.stream();
-    operatorStream.filter(input -> input.matches(ONLY_OPERATOR_REGEX))
+    operatorStream.filter(input -> input.matches("[\\+\\-\\*\\/]"))
         .forEach(this::setOperator);
   }
 
