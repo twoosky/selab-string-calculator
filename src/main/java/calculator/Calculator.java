@@ -1,5 +1,9 @@
 package calculator;
 
+import calculation.*;
+import calculatorIO.Input;
+import calculatorIO.Output;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -10,8 +14,15 @@ public class Calculator {
     public Queue<Number> number = new LinkedList<>();
     public Queue<Operator> operator = new LinkedList<>();
 
-    public Calculator(){
+    public final Plus PLUS = new Plus();
+    public final Minus MINUS = new Minus();
+    public final Times TIMES = new Times();
+    public final Division DIVISION = new Division();
 
+    public Calculator(){
+        new Input(this);
+        new Calculation(this);
+        new Output(this);
     }
 
     public void setFormula(String formula){
