@@ -1,0 +1,16 @@
+package calculation;
+
+public class Plus implements Calculate{
+
+    private final String SIGN = "+";
+
+    @Override
+    public int doCalculate(int number1, int number2) {
+        return number1 + number2;
+    }
+
+    @Override
+    public String getSIGN() {
+        return SIGN;
+    }
+}
