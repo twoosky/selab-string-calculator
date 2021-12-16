@@ -7,6 +7,7 @@ public class Input {
 
   protected List<String> scanLine() {
     System.out.println("식을 입력해주세요");
-    return new ArrayList<>(Arrays.asList(scanner.nextLine().split(REGEX)));
+    List<String> InputSplit = Arrays.asList(scanner.nextLine().split(REGEX));
+    return new ArrayList<>(InputSplit);
   }
 }

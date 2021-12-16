@@ -7,7 +7,7 @@ public class Main {
     Input input = new Input();
     Output output = new Output();
     Calculator calculator = new Calculator();
-
-    output.printResult(calculator.isProgressing(input.scanLine(), INIT_RANGE));
+    int result = calculator.isProgressing(input.scanLine(), INIT_RANGE);
+    output.printResult(result);
   }
 }
