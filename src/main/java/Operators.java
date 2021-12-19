@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.function.IntBinaryOperator;
 
 public enum Operators {
@@ -6,6 +7,7 @@ public enum Operators {
   MULTIPLE("*", (frontNumber, behindNumber) -> frontNumber * behindNumber),
   DIVIDE("/", (frontNumber, behindNumber) -> frontNumber / behindNumber),
   REMINDER("%", (frontNumber, behindNumber) -> frontNumber % behindNumber);
+
 
   private final String symbol;
   private final IntBinaryOperator calculate;
@@ -16,17 +18,21 @@ public enum Operators {
   }
 
   public static int calculating(int frontNumber, String input_Symbol, int behindNumber) {
-    for (Operators operators : Operators.values()) {
-      if (matchSymbol(operators, input_Symbol)) {
-        return operators.calculate.applyAsInt(frontNumber, behindNumber);
-      }
-    }
-    throw new RuntimeException();
+    return Arrays.stream(Operators.values())
+        .filter((operators -> matchSymbol(operators, input_Symbol)))
+        .findAny()
+        .map(operators -> doCalculate(frontNumber, operators, behindNumber))
+        .orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다."));
   }
 
   private static boolean matchSymbol(Operators operators, String input_Symbol) {
     return operators.symbol.equals(input_Symbol);
   }
+
+  private static int doCalculate(int frontNumber, Operators operators, int behindNumber) {
+    return operators.calculate.applyAsInt(frontNumber, behindNumber);
+  }
+
 
 }
 
