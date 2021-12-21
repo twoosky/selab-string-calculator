@@ -1,13 +1,22 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class SelectString {
-    public final String[] changeArray;
+    private List<String> changeArray = new ArrayList<>();
+    private String[] set;
 
     public SelectString(String formula) {
-        changeArray = formula.split(" ");
+       setList(formula);
+    }
+    private void setList(String formula){
+        set = formula.split(" ");
+        this.changeArray.addAll(Arrays.asList(set));
     }
 
-    public String[] getChangeArray(){
+    public List<String> getChangeArray(){
         return changeArray;
     }
 }
