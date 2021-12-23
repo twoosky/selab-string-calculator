@@ -21,9 +21,9 @@ public class Calculator {
 
   private static int calculating(Numbers numbers, Operator operator, int index) {
     return Operators.calculating(
-        numbers.getNumbers(Numbers.FRONT_NUMBER),
+        numbers.getNumbers(Number.FRONT_NUMBER),
         operator.getOperator(index),
-        numbers.getNumbers(Numbers.BEHIND_NUMBER));
+        numbers.getNumbers(Number.BEHIND_NUMBER));
   }
 
 }

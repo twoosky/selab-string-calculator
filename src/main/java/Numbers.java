@@ -5,13 +5,10 @@ import java.util.stream.Stream;
 public class Numbers {
 
   private final List<Integer> Numbers = new ArrayList<>();
-  private final static String ONLY_NUMBER_REGEX = "^[0-9]+$";
-  public final static int FRONT_NUMBER = 0;
-  public final static int BEHIND_NUMBER = 1;
 
   public Numbers(List<String> inputs) {
     Stream<String> numberStream = inputs.stream();
-    numberStream.filter(input -> input.matches(ONLY_NUMBER_REGEX))
+    numberStream.filter(input -> input.matches(Number.ONLY_NUMBER_REGEX))
         .forEach(this::setNumbers);
   }
 
@@ -29,9 +26,9 @@ public class Numbers {
 
   public void removeAndAddNumber(int result) {
     if (!Numbers.isEmpty()) {
-      Numbers.remove(BEHIND_NUMBER);
-      Numbers.remove(FRONT_NUMBER);
-      Numbers.add(FRONT_NUMBER, result);
+      Numbers.remove(Number.BEHIND_NUMBER);
+      Numbers.remove(Number.FRONT_NUMBER);
+      Numbers.add(Number.FRONT_NUMBER, result);
     }
   }
 
