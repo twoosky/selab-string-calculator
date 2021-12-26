@@ -2,20 +2,18 @@ import java.util.*;
 
 public class Calculator {
 
-  public final static int REMAIN_NUMBER = 2;
-
-  public int isProgressing(List<String> inputs, int result) {
-    for (int i = 0; i < operator.getSize(); i++) {
-      result = calculating(numbers, operator, i);
-      if (numbers.getSize() > REMAIN_NUMBER) {
-        numbers.removeAndAddNumber(result);
-      }
+  public int isProgressing(List<String> inputs) {
+    int result = Integer.parseInt(inputs.get(0));
+    for (int i = 1; i < inputs.size(); i += 2) {
+      result = calculating(inputs.get(i), result, inputs.get(i + 1));
     }
     return result;
   }
 
-  private static int calculating(String operator, int frontNumber, int behindNumber) {
-    return Operator.using(operator).doCalculate(frontNumber, behindNumber);
+  private static int calculating(String operator, int frontNumber, String behindNumber) {
+    return Operator
+        .using(operator)
+        .doCalculate(frontNumber, Integer.parseInt(behindNumber));
 
   }
 

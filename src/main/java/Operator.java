@@ -8,7 +8,6 @@ public enum Operator {
   DIVIDE("/", (frontNumber, behindNumber) -> frontNumber / behindNumber),
   REMINDER("%", (frontNumber, behindNumber) -> frontNumber % behindNumber);
 
-
   private final String symbol;
   private final IntBinaryOperator calculate;
 
