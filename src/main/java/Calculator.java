@@ -1,6 +1,4 @@
 import java.util.*;
-import java.util.stream.Stream;
-import jdk.internal.org.objectweb.asm.commons.StaticInitMerger;
 
 public class Calculator {
 
@@ -20,7 +18,7 @@ public class Calculator {
   }
 
   private static int calculating(Numbers numbers, Operator operator, int index) {
-    return Operators.calculating(
+    return Operator.calculating(
         numbers.getNumbers(Number.FRONT_NUMBER),
         operator.getOperator(index),
         numbers.getNumbers(Number.BEHIND_NUMBER));

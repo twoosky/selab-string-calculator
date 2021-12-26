@@ -1,28 +1,38 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.function.IntBinaryOperator;
 
-public class Operator {
+public enum Operator {
+  PLUS("+", (frontNumber, behindNumber) -> frontNumber + behindNumber),
+  MINUS("-", (frontNumber, behindNumber) -> frontNumber - behindNumber),
+  MULTIPLE("*", (frontNumber, behindNumber) -> frontNumber * behindNumber),
+  DIVIDE("/", (frontNumber, behindNumber) -> frontNumber / behindNumber),
+  REMINDER("%", (frontNumber, behindNumber) -> frontNumber % behindNumber);
 
-  private final List<String> Operator = new ArrayList<>();
-  private final static String ONLY_OPERATOR_REGEX = "[\\+\\-\\*\\/\\%]";
 
-  public Operator(List<String> inputs) {
-    Stream<String> operatorStream = inputs.stream();
-    operatorStream.filter(input -> input.matches(ONLY_OPERATOR_REGEX))
-        .forEach(this::setOperator);
+  private final String symbol;
+  private final IntBinaryOperator calculate;
+
+  Operator(String symbol, IntBinaryOperator calculate) {
+    this.symbol = symbol;
+    this.calculate = calculate;
   }
 
-  public String getOperator(int index) {
-    return Operator.get(index);
+  public static int calculating(int frontNumber, String input_Symbol, int behindNumber) {
+    return Arrays.stream(Operator.values())
+        .filter((operator -> matchSymbol(operator, input_Symbol)))
+        .findAny()
+        .map(operator -> doCalculate(frontNumber, operator, behindNumber))
+        .orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다."));
   }
 
-  public void setOperator(String input) {
-    Operator.add(input);
+  private static boolean matchSymbol(Operator operator, String input_Symbol) {
+    return operator.symbol.equals(input_Symbol);
   }
 
-  public int getSize() {
-    return Operator.size();
+  private static int doCalculate(int frontNumber, Operator operator, int behindNumber) {
+    return operator.calculate.applyAsInt(frontNumber, behindNumber);
   }
+
 
 }
+
