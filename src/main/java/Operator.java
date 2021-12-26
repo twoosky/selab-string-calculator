@@ -17,11 +17,10 @@ public enum Operator {
     this.calculate = calculate;
   }
 
-  public static int calculating(int frontNumber, String input_Symbol, int behindNumber) {
+  public static Operator using(String input_Symbol) {
     return Arrays.stream(Operator.values())
         .filter((operator -> matchSymbol(operator, input_Symbol)))
-        .findAny()
-        .map(operator -> doCalculate(frontNumber, operator, behindNumber))
+        .findFirst()
         .orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다."));
   }
 
@@ -29,8 +28,8 @@ public enum Operator {
     return operator.symbol.equals(input_Symbol);
   }
 
-  private static int doCalculate(int frontNumber, Operator operator, int behindNumber) {
-    return operator.calculate.applyAsInt(frontNumber, behindNumber);
+  public int doCalculate(int frontNumber, int behindNumber) {
+    return calculate.applyAsInt(frontNumber, behindNumber);
   }
 
 
