@@ -5,9 +5,9 @@ public class Input {
   private final static Scanner scanner = new Scanner(System.in);
   private final static String REGEX = " ";
 
-  protected List<String> scanLine() {
+  protected List<String> GetInput() {
     System.out.println("식을 입력해주세요");
-    List<String> InputSplit = Arrays.asList(scanner.nextLine().split(REGEX));
-    return new ArrayList<>(InputSplit);
+    List<String> InputData = Arrays.asList(scanner.nextLine().split(REGEX));
+    return new ArrayList<>(InputData);
   }
 }

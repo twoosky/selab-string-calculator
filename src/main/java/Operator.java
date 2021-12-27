@@ -2,21 +2,21 @@ import java.util.Arrays;
 import java.util.function.IntBinaryOperator;
 
 public enum Operator {
-  PLUS("+", (frontNumber, behindNumber) -> frontNumber + behindNumber),
-  MINUS("-", (frontNumber, behindNumber) -> frontNumber - behindNumber),
-  MULTIPLE("*", (frontNumber, behindNumber) -> frontNumber * behindNumber),
-  DIVIDE("/", (frontNumber, behindNumber) -> frontNumber / behindNumber),
-  REMINDER("%", (frontNumber, behindNumber) -> frontNumber % behindNumber);
+  PLUS("+", (frontOperand, behindOperand) -> frontOperand + behindOperand),
+  MINUS("-", (frontOperand, behindOperand) -> frontOperand - behindOperand),
+  MULTIPLE("*", (frontOperand, behindOperand) -> frontOperand * behindOperand),
+  DIVIDE("/", (frontOperand, behindOperand) -> frontOperand / behindOperand),
+  REMINDER("%", (frontOperand, behindOperand) -> frontOperand % behindOperand);
 
   private final String symbol;
-  private final IntBinaryOperator calculate;
+  private final IntBinaryOperator formula;
 
-  Operator(String symbol, IntBinaryOperator calculate) {
+  Operator(String symbol, IntBinaryOperator formula) {
     this.symbol = symbol;
-    this.calculate = calculate;
+    this.formula = formula;
   }
 
-  public static Operator using(String input_Symbol) {
+  public static Operator verifySymbol(String input_Symbol) {
     return Arrays.stream(Operator.values())
         .filter((operator -> matchSymbol(operator, input_Symbol)))
         .findFirst()
@@ -27,8 +27,8 @@ public enum Operator {
     return operator.symbol.equals(input_Symbol);
   }
 
-  public int doCalculate(int frontNumber, int behindNumber) {
-    return calculate.applyAsInt(frontNumber, behindNumber);
+  public int ApplyOperand(int frontOperand, int behindOperand) {
+    return formula.applyAsInt(frontOperand, behindOperand);
   }
 
 
