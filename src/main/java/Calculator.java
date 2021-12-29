@@ -2,6 +2,8 @@ import java.util.*;
 
 public class Calculator {
 
+    private final static String REGEX = "^[0-9]+$";
+
   public int OnProgress(List<String> inputs) {
     int calculatedResult = Integer.parseInt(inputs.get(0));
     for (int i = 1; i < inputs.size(); i += 2) {
@@ -16,6 +18,5 @@ public class Calculator {
         .ApplyOperand(frontOperand, Integer.parseInt(behindOperand));
 
   }
-
 }
 
