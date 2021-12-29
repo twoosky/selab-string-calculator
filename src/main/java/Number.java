@@ -11,7 +11,7 @@ public class Number {
     this.number = number;
   }
 
-  public boolean IsNumber (String number) {
+  public boolean isNumber(String number) {
     return number.matches(NUMBER_REGEX);
   }
 

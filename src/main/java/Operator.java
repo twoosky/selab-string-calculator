@@ -27,7 +27,7 @@ public enum Operator {
     return operator.symbol.equals(input_Symbol);
   }
 
-  public int ApplyOperand(int frontOperand, int behindOperand) {
+  public int applyOperand(int frontOperand, int behindOperand) {
     return formula.applyAsInt(frontOperand, behindOperand);
   }
 

@@ -4,7 +4,7 @@ public class Calculator {
 
     private final static String REGEX = "^[0-9]+$";
 
-  public int OnProgress(List<String> inputs) {
+  public int onProgress(List<String> inputs) {
     int calculatedResult = Integer.parseInt(inputs.get(0));
     for (int i = 1; i < inputs.size(); i += 2) {
       calculatedResult = calculate(inputs.get(i), calculatedResult, inputs.get(i + 1));
@@ -15,7 +15,7 @@ public class Calculator {
   private static int calculate(String operator, int frontOperand, String behindOperand) {
     return Operator
         .verifySymbol(operator)
-        .ApplyOperand(frontOperand, Integer.parseInt(behindOperand));
+        .applyOperand(frontOperand, Integer.parseInt(behindOperand));
 
   }
 }

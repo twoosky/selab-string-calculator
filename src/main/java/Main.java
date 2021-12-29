@@ -4,7 +4,7 @@ public class Main {
     Input input = new Input();
     Output output = new Output();
     Calculator calculator = new Calculator();
-    int calculatedResult = calculator.OnProgress(input.GetInput());
-    output.PrintResult(calculatedResult);
+    int calculatedResult = calculator.onProgress(input.getInput());
+    output.printResult(calculatedResult);
   }
 }
