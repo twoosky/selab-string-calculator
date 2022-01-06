@@ -1,4 +1,3 @@
-import java.util.List;
 
 public class Number {
 
@@ -6,19 +5,24 @@ public class Number {
   public final static int FRONT_NUMBER = 0;
   public final static int BEHIND_NUMBER = 1;
 
-  private final List<Integer> number;
+  private final int number;
 
-  public Number(List<Integer> number) {
-    this.number = number;
+  public Number(String number) {
+    numberVerification(number);
+    this.number = mapToInt(number);
   }
 
-  public boolean isNumber(String number) {
-    return number.matches(NUMBER_REGEX);
+  private void numberVerification(String number) {
+    if (!number.equals(NUMBER_REGEX)) {
+      throw new IllegalArgumentException("숫자가 아닙니다!");
+    }
   }
 
-  public int toInteger(String number) {
+  public int mapToInt(String number) {
     return Integer.parseInt(number);
   }
 
 
 }
+
+  
