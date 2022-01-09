@@ -3,20 +3,23 @@ import java.util.stream.IntStream;
 
 public class Calculator {
 
+  final static int ZERO = 0;
+  final static int Even = 2;
+
   public int onProgress(List<String> inputs) {
-    int calculatedResult = getCalculatedResult(inputs);
-    calculatedResult = IntStream.range(0, inputs.size())
-        .filter(Calculator::isEvenIndex)
+    int calculatedResult = getInitValue(inputs);
+    calculatedResult = IntStream.range(ZERO, inputs.size())
+        .filter(Calculator::isOddIndex)
         .reduce(calculatedResult, (init, index) -> toExpression(inputs, index, init));
     return calculatedResult;
   }
 
-  private static boolean isEvenIndex(int i) {
-    return i % 2 != 0 && i > 0;
+  private static boolean isOddIndex(int index) {
+    return index % Even != ZERO;
   }
 
-  private static int getCalculatedResult(List<String> inputs) {
-    return Number.mapToInt(inputs.get(0));
+  private static int getInitValue(List<String> inputs) {
+    return Number.mapToInt(inputs.get(ZERO));
   }
 
   private static int toExpression(List<String> inputs, int index, int calculatedResult) {
