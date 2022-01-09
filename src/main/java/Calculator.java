@@ -23,6 +23,7 @@ public class Calculator {
   }
 
   private static int toExpression(List<String> inputs, int index, int calculatedResult) {
+    Number.numberVerification(inputs.get(index + 1));
     return calculate(inputs.get(index), calculatedResult, inputs.get(index + 1));
   }
 
