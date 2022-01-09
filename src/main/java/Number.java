@@ -18,7 +18,7 @@ public class Number {
     }
   }
 
-  public int mapToInt(String number) {
+  public static int mapToInt(String number) {
     return Integer.parseInt(number);
   }
 
