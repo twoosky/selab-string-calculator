@@ -1,5 +1,7 @@
 package model;
 
+import controller.Num;
+
 import java.util.function.BiFunction;
 import java.util.Arrays;
 

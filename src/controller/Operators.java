@@ -6,15 +6,15 @@ import java.util.List;
 public class Operators {
     private final List<String> operatorList = new ArrayList<>();
 
-    public Operators(String[] changeArray) {
+    public Operators(List<String> changeArray) {
         setOperatorList(changeArray);
-        validateSize(List.of(changeArray));
+        validateSize(changeArray);
     }
 
-    private void setOperatorList(String[] changeArray) {
-        for (int i = Calculator.indexZero; i < changeArray.length; i++) {
+    private void setOperatorList(List<String> changeArray) {
+        for (int i = Calculator.indexZero; i < changeArray.size(); i++) {
             if (isOperatorIndex(i)) {
-                operatorList.add(changeArray[i]);
+                operatorList.add(changeArray.get(i));
                 continue;
             }
         }

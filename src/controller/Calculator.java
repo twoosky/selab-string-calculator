@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static model.Operator.calculate;
 
@@ -8,31 +9,45 @@ public class Calculator {
     protected static final int indexZero = 0;
     protected static final int indexFirst = 1;
     protected static final int indexSecond = 2;
-    private int firstSum;
-    private int sum;
+    private final int binaryResult;
     private int result;
 
-    public Calculator(List<Integer> numList, List<String> operatorList) {
-        this.firstSum = firstResult(numList, operatorList);
+    public Calculator(List<Num> numList, List<String> operatorList) {
+        this.binaryResult = binaryCalculator(changeIntList(numList), operatorList);
     }
 
-    private int firstResult(List<Integer> formulaNumList, List<String> formulaOperatorList) {
-        return calculate(formulaNumList.get(indexZero), formulaOperatorList.get(indexZero), formulaNumList.get(indexFirst));
+    //Num->Integer로 변환
+    private List<Integer> changeIntList(List<Num> numList){
+        return numList.stream()
+               .mapToInt(Num::getNumMember)
+               .boxed()
+               .collect(Collectors.toList());
     }
 
-    public int result(List<Integer> formulaNumList, List<String> formulaOperatorList) {
-        if (formulaOperatorList.size() == indexFirst)
-            this.result = firstSum;
-        sumCalculator(formulaNumList, formulaOperatorList);
-        return result;
+    //항의 개수가 2개를 계산하는 계산기
+    private Integer binaryCalculator(List<Integer> intList, List<String> operatorList) {
+        return calculate(intList.get(indexZero),
+                operatorList.get(indexZero),
+               intList.get(indexFirst));
     }
 
-    private int sumCalculator(List<Integer> formulaNumList, List<String> formulaOperatorList) {
-        this.sum = firstSum;
-        for (int i = indexFirst; i < formulaOperatorList.size(); i++) {
-            this.result = calculate(sum, formulaOperatorList.get(i), formulaNumList.get(i + indexFirst));
-            sum = this.result;
+    // 항의 개수가 3개 이상 계산하는 계산기
+    private void multiCalculator(List<Num> numList, List<String> operatorList) {
+        this.result = binaryResult;
+        List<Integer> intList = changeIntList(numList);
+        for (int i = indexFirst; i < operatorList.size(); i++) {
+            int midSum = calculate(result,
+                    operatorList.get(i),
+                    intList.get(i + indexFirst));
+            result = midSum;
         }
-        return sum;
+    }
+
+    // 계산기 선별기
+    public int calculatorSelection (List<Num> intList, List<String> operatorList) {
+        if (operatorList.size() == indexFirst)
+            return binaryResult;
+        multiCalculator(intList, operatorList);
+        return result;
     }
 }

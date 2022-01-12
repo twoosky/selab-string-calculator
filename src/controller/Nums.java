@@ -4,20 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Nums {
-    Num num = new Num();
-    private List<Num> numList = new ArrayList<>();
+
+    private final List<Num> numList = new ArrayList<>();
 
     public Nums(List<String> changeArray) {
         makeNumList(changeArray);
-        getNumList();
-        validateSize(this.numList);
+        validateSize(getNumList());
     }
 
     private void makeNumList(List<String> changeArray) {
         for(int index = 0; index< changeArray.size();index++){
-            if(isNumIndex(index)){
-                numList.add(num.getNumList(changeArray, index));
-            }
+            if(isNumIndex(index))
+                this.numList.add(new Num(changeArray.get(index)));
         }
     }
 

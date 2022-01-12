@@ -1,12 +1,17 @@
 package controller;
 
-import java.util.List;
-
 public class Num {
-    private int numAdd;
+    private int numMember;
 
-    public Num getNumList(List<String> changeArray, int index) {
-        this.numAdd = Integer.parseInt(changeArray.get(index));
-        return this;
+    public Num (String numMember){
+        this.numMember = changeInteger(numMember);
+    }
+
+    private int changeInteger(String numString){
+        return numMember = Integer.parseInt(numString);
+    }
+
+    public int getNumMember() {
+        return numMember;
     }
 }
