@@ -7,32 +7,29 @@
 3. 출력은 `100`으로 나옵니다.
 
 ### 2. 구현 소개
-1. 페키스 소개
+1. 역할 소개
   * controller
-    *CalculatorController.java
+    *CalculatorController : 계산하기위한 데이터 타입 변환과 수가 2개일 때 3개이상인지 계산기를 선택
     
   * domian
-    - Calculator
-    - Number
-    - Numbers
-    - Operator
+    - Calculator : 계산 (식을 계산하는 메서드)의 역할
+    - Number : Number만 리턴을위한 역할
+    - Numbers : Number객체들을 리스트로 만들어 전체 관리를하는 역할
+    - Operator : Operator 리스트를 생성하고 관리하는 역할
   
   * view
-    - InputView
-    - OutView
+    - InputView : 식을 입력받고 List<String>의 형태로 반환하는 역할
+    - OutView : 결과를 출력하는 역할
  
   * model
-    - Operator
-    - IndexNumber
+    - Operator : enum을 이용한 계산기 모델
+    - IndexNumber : 상수들을 모은 모델
     
-  * CalculatorApplication.java
+  * CalculatorApplication.java : 실행
 
 으로 구성되어 있다.
-### 3. 기타사항
-1. 리뷰는 매주 1회 리뷰어들이 달아드립니다!
-2. 코드에 주석을 달기보다는, 코드로서 설명이 가능하도록 구현해주세요!
-3. 추가적이 문의사항이 있다면, 아래의 메일로 연락주세요!
+
+### 3. MVC 실행 순서
 ```
-wrjs@naver.com
+InputView(view)- > CalculatorController(Controller) -> operator(Model) -> CalculatorController(Controller) -> OutView(view)
 ```
-4. 공부하고 싶은 SE.LAB원이라면 누구나 환영!
