@@ -33,3 +33,13 @@
 ```
 InputView(view)- > CalculatorController(Controller) -> operator(Model) -> CalculatorController(Controller) -> OutView(view)
 ```
+ 
+ ### 4. 변경사항 
+[ ]1. 생성자를 메서도로 만들어기
+[ ]2. 도메인 구분
+[ ]3. 클래스(명사) 메서드(동사)
+[ ]4. 유틸 요소가 아니면  static을 사용하지 안 하기
+[ ]5. 버퍼리더 사용
+[ ]6. stream-> List로 만들기
+[ ]7. 큐를 사용
+[ ]8. 구글 컨벤션 적용
