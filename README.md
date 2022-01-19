@@ -6,14 +6,28 @@
 2. 입력은 `30 + 20 / 2 * 4` 순으로 받으며, 연산자 우선순위 없이 앞에서 부터 계산을 진행합니다.=
 3. 출력은 `100`으로 나옵니다.
 
-### 2. commit 및 pr 방법
-1. branch에 `본인이름/main` 과 `본인이름/working`으로 2개의 브랜치 만들기 
-> `donggeon/main`, `donggeon/working`으로 브랜치 두개 생성
-2. 해당 프로젝트를 clone 한 뒤에 git checkout 본인이름/working으로 바꾸기
-3. 프로젝트 개발 이후 본인이름/working으로 push 진행
-4. github에 가서 pr 요청 
-5. pr 진행시 본인이름/main <- 본인이름/working 으로 pr 날리기!
+### 2. 구현 소개
+1. 페키스 소개
+  * controller
+    *CalculatorController.java
+    
+  * domian
+    - Calculator
+    - Number
+    - Numbers
+    - Operator
+  
+  * view
+    - InputView
+    - OutView
+ 
+  * model
+    - Operator
+    - IndexNumber
+    
+  * CalculatorApplication.java
 
+으로 구성되어 있다.
 ### 3. 기타사항
 1. 리뷰는 매주 1회 리뷰어들이 달아드립니다!
 2. 코드에 주석을 달기보다는, 코드로서 설명이 가능하도록 구현해주세요!
