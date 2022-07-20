@@ -1,5 +1,4 @@
 import java.util.LinkedList;
-import java.util.Stack;
 import java.util.regex.Pattern;
 
 public class Calculator {
@@ -38,6 +37,7 @@ public class Calculator {
         }
         return operands.element();
     }
+
     public boolean validateOperand(String element) {
         if(!Pattern.compile("^[0-9]+$")
                 .matcher(element)
