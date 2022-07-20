@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Input {
     private final String INPUT_MESSAGE = "식을 입력해주세요 : ";
     private final Scanner SCANNER = new Scanner(System.in);
-    private final String separator = " ";
+    private final String SEPERATOR = " ";
 
     public Input(Calculator calculator){
         printInputMessage();
@@ -38,6 +38,6 @@ public class Input {
     }
 
     private String[] split(String formula){
-        return formula.split(separator);
+        return formula.split(SEPERATOR);
     }
 }
