@@ -10,7 +10,7 @@ public class Plus implements Calculate{
     }
 
     @Override
-    public String getSIGN() {
+    public String getSign() {
         return SIGN;
     }
 }

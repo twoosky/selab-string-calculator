@@ -10,7 +10,7 @@ public class Division implements Calculate{
     }
 
     @Override
-    public String getSIGN() {
+    public String getSign() {
         return SIGN;
     }
 }
