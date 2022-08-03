@@ -17,15 +17,32 @@ wrjs@naver.com
 
 ### 3. 구현 내용
 * **Calculator**: 입력값 및 연산 처리 클래스
-  * `calculate()`: 숫자와 연산자를 구분해 연결리스트에 삽입하는 메소드
+  * `calculate()`: 숫자, 연산자 삽입 및 연산
   * `subCalculate()`: 연결리스트에 존재하는 숫자와 연산자를 하나씩 꺼내 연산하는 메소드
-  * `validateOperand()`: 입력받은 숫자가 유효한 값인지 확인하는 메소드
+  * `insertElement`: 숫자와 연산자를 구분해 연결리스트에 삽입하는 메소드
 
 
 * **Operator**: 연산자에 대한 연산을 수행하는 클래스
   * `calculate()`: 연산할 두 수를 받아 연산 수행 후 연산 결과를 반환하는 메소드
   * `getOperator()`: 연산자에 해당하는 enum 상수 반환하는 메소드
-  * `isOperator()`: 입력받은 연산자가 유효한 값인지 확인하는 메소드
+  * `getInstance()`: 연산자의 인스턴스 반환 및 연산자 유효성 검사
+  * `getResult()` : 연산자에 따른 연산 결과 반환
+  * `insertLast()`: 연산자 삽입
+  * `getOperator()`: 연산자 반환
+  * `isEmpty()`: 연산자 리스트 비어있는지 체크
+
+* **Operand**: 숫자를 처리하는 클래스
+  * `insertLast()` : 숫자를 연결리스트 앞에 삽입
+  * `insertFirst()` : 숫자를 연결리스트 뒤에 삽입
+  * `getOperand()` : 연결리스트 맨 앞의 숫자 반환
+  * `validateOperand()` : 입력값이 숫자인지 검사
 
 * **InputUtil**: 문자열 입력 클래스
   * `getInput()`: 입력받은 문자열 반환하는 메소드
+
+* **OutputUtil**: 문자열 입력 클래스
+  * `getOutput()`: 결과값 출력하는 메소드
+
+* 요구사항 분석
+  * 입력은 띄어쓰기로 연산자, 숫자를 구분한다.
+  * 연산자 우선순위에 상관없이 앞에서부터 계산을 진행한다.

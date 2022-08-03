@@ -11,7 +11,6 @@ public enum Operator {
 
     private final String operator;
     private final Expression<Integer> expression;
-    private static final LinkedList<String> operators = new LinkedList<>();
 
     Operator(String operator, Expression<Integer> expression) {
         this.operator = operator;
@@ -29,20 +28,21 @@ public enum Operator {
                 .orElseThrow(() -> new RuntimeException("유효하지 않은 연산자입니다."));
     }
 
-    public static boolean isOperator(String operator) {
-        return Arrays.stream(Operator.values())
-                .anyMatch(op -> op.operator.equals(operator));
+    public static int getResult(LinkedList<String> operators, int num1, int num2) {
+        String operator = getOperator(operators);
+        int result = getInstance(operator).calculate(num1, num2);
+        return result;
     }
 
-    public static void insertLast(String element) {
+    public static void insertLast(LinkedList<String> operators, String element) {
         operators.addLast(element);
     }
 
-    public static String getOperator() {
+    public static String getOperator(LinkedList<String> operators) {
         return operators.removeFirst();
     }
 
-    public static Boolean isEmpty() {
+    public static Boolean isEmpty(LinkedList<String> operators) {
         return operators.isEmpty();
     }
 }

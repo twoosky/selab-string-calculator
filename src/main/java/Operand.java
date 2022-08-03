@@ -8,11 +8,11 @@ public class Operand {
         this.operands = new LinkedList<>();
     }
 
-    public void insertLast(Integer element) {
+    public void insertLast(int element) {
         operands.addLast(element);
     }
 
-    public void insertFirst(Integer element) {
+    public void insertFirst(int element) {
         operands.addFirst(element);
     }
 
@@ -20,12 +20,7 @@ public class Operand {
         return operands.removeFirst();
     }
 
-    public Boolean validateOperand(String element) {
-        if(!Pattern.compile("^[0-9]+$")
-                .matcher(element)
-                .matches()) {
-            throw new RuntimeException("유효하지 않은 수입니다.");
-        }
-        return true;
+    public boolean validateOperand(String element) {
+        return Pattern.matches("^[0-9]+$", element);
     }
 }
